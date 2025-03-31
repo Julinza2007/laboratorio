@@ -7,17 +7,23 @@ int i, N, contPalabra=1;
 
 main(){
 	
-	printf("Ingrese una cadena de caracteres: ");
-	scanf("%s", string);
+	printf("Ingrese unas cadenas de caracteres: ");
+	scanf(" %[^\n]s", string);
 	
-	N = strlen(string) - 1;
+	N = strlen(string);
+	printf("Cantidad de caracteres: %d\n\n", N);
 	
-	for(i=0; i <= N; i++){
-		if(string[i] == ' '){
+	for(i=0; i < N; i++){
+		printf("%c\n", string[i]);
+		
+		if(string[i] == ' ' && string[i + 1] != ' ' && string[i + 1] != '\0'){
 			contPalabra++;
 		}
 	}
 	
-	printf("La cantidad de palabras ingresada es de: %d", contPalabra);
+	printf("\nLa cantidad de palabras existentes es de: %d", contPalabra);
+
+
 	
+		
 }
