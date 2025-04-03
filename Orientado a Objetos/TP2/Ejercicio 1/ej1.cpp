@@ -1,10 +1,11 @@
 #include <stdio.h>
-char nombre[12];
+#include <ctype.h>
+char nombre[100];
 
 main(){
 	
 	printf("Ingrese el nombre del usuario: ");
-	scanf("%s", nombre);
+	fgets(nombre, sizeof(nombre), stdin);
 	
 	printf("El nombre del usuario es: %s", nombre);	
 	

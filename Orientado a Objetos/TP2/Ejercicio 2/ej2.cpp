@@ -4,10 +4,9 @@
 char string[100];
 int i, longitud, contVocal;
 
-
 main(){
 
-printf("Ingrese un string para saber cuantas vocales tiene: ");
+printf("Ingrese una string para saber cuantas vocales tiene: ");
 scanf("%s", string);
 
 longitud = strlen(string);
