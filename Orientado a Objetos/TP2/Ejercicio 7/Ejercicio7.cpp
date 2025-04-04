@@ -37,12 +37,10 @@ main(){
 						string1[j + 1] = aux1;	
 						}
 				}
-			}
-			printf("\n\nString1: %s", string);
-			printf("\nString2: %s", string1);
-			
+			}			
 			
 			respuesta = strcmp(string, string1);
+			
 				if(respuesta == 0){
 					printf("\nEs un anagrama.");
 				}
@@ -52,6 +50,6 @@ main(){
 			}
 		}
 		else{
-			printf("\n\nPalabras con la misma longitud.");
+			printf("\n\nPalabras con distinta longitud. No es anagrama.");
 		}
 	}
