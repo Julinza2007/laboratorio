@@ -5,10 +5,15 @@ char string[100], subcadena[100], *ptr;
 
 main(){
 	printf("Ingrese una string: ");
-	scanf(" %[^\n]", string);
+	fgets(string, sizeof(string), stdin);
+    if(string[strlen(string) - 1] == '\n'){
+        string[strlen(string) - 1] = '\0';
+    }
 	printf("Ingrese una subcadena para saber si se encuentra o no: ");
-	scanf(" %[^\n]", subcadena);
-
+	fgets(subcadena, sizeof(subcadena), stdin);
+    if(subcadena[strlen(subcadena) - 1] == '\n'){
+        subcadena[strlen(subcadena) - 1] = '\0';
+    }
 	
 	ptr = strstr(string, subcadena);
 	
