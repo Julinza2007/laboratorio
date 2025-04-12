@@ -1,23 +1,32 @@
-//Encontrar la suma y el promedio de los elementos de un arreglo
-//usando punteros y funciones.
-
 #include <stdio.h>
-
-
-int suma(int num1, int num2){
-	int	resultado = num1 + num2;
-	return resultado;
-}
-
-float promedio(float num1, float num2){
-	float acum = num1 + num2;
-	float prom = acum / 2;
-	
-	return prom;	
-}
+float suma(float *ptr1, float *ptr2);
+float promedio(float *ptr1, float *ptr2);
 
 main(){
-	printf("Ingrese el primer numero: ");
-	scanf("%f", )
+	float num1, num2, resultSuma, resultPromedio;
 	
+	printf("Ingrese el primer numero: ");
+	scanf("%f", &num1);
+	printf("Ingrese el segundo numero: ");
+	scanf("%f", &num2);
+
+	resultSuma = suma(&num1, &num2);
+	resultPromedio = promedio(&num1, &num2);
+	
+	printf("\n\nSuma %f + %f es igual a %f\n", num1, num2, resultSuma);
+	printf("El promedio es igual a %f", resultPromedio);
 }
+
+float suma(float *ptr1, float *ptr2){
+	return *ptr1 + *ptr2;
+}
+
+float promedio(float *ptr1, float *ptr2){
+	float acum = suma(ptr1, ptr2);
+	return acum / 2;
+}
+
+
+
+
+
