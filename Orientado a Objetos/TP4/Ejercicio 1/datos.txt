@@ -1,0 +1,6 @@
+Nombre: Julian
+Apellido: Martin
+DNI: 20077777
+Nombre: Vegetta
+Apellido: Samuel
+DNI: 777
