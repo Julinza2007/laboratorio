@@ -49,13 +49,17 @@ int main(){
 			
 				printf("\nIngrese el DNI a buscar: ");
 				scanf("%d", &dniBuscado);
-			
-				while(fscanf(archivo, "Nombre: %s\nApellido: %s\nDNI: %d\n", nombre, apellido, &DNI) == 3 && encontrado != 1){
+				
+				encontrado=0;
+				
+				while(fscanf(archivo, "Nombre: %s\nApellido: %s\nDNI: %d\n", nombre, apellido, &DNI) && encontrado != 1){
 					if (DNI == dniBuscado){
 						printf("Nombre: %s\nApellido: %s\n", nombre, apellido);
 						encontrado = 1;
 					}
 				}
+				
+				fclose(archivo);
 			
 			break;
 		

@@ -1,0 +1,2 @@
+Nombre: Hola Apellido: Julinza DNI: 123
+Nombre: Loco Apellido: Cuaresma DNI: 392
