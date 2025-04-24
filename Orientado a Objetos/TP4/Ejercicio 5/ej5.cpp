@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-
-
 //Hay que crear un archivo paralelo a datos.txt que se llame cambios.txt.
 //Y en cambios.txt se añaden los nuevos registros.
 //datos.txt tiene que tener datos fijos que no pueden ser modificados.
@@ -9,13 +7,14 @@
 //Tengo que copiar el contenido fijo de datos.txt en cambios.txt, no quiero que se dupliquen los registros copiados.
 //Por lo tanto debo validar que la copia ya está hecha con algun booleano antes, pero debe estar en el archivo ese booleano.
 
-
 void copiarDatos(FILE *ar, FILE *cmb);
 int validarArchivo(FILE *ar);
+void saltarMarca(FILE *ar);
 void ingresarPersona(FILE *ar);
 int validarPersona(FILE *ar, int dniIngreso);
 void buscarPorDni(FILE *ar);
-void buscarPersona(FILE *ar);
+void busc
+arPersona(FILE *ar);
 void mostrarOrdenado(FILE *ar, int opc);
 
 
@@ -139,10 +138,7 @@ void copiarDatos(FILE *ar, FILE *cmb){
 	}
 	
 	
-	
 }
-
-
 
 int validarArchivo(FILE *ar){
 		if(ar == NULL){
@@ -154,6 +150,15 @@ int validarArchivo(FILE *ar){
 		}		
 }
 
+void saltarMarca(FILE *ar){
+// Quiero que me detecte la linea que dice COPIA_REALIZADA y cuando la detecte quiero que se la saltee.
+   char palabra[20];
+   
+   if(fscanf(ar, "%s", palabra) == 1 && strcmp(palabra, "COPIA_REALIZADA") == 0){
+   	fgets(palabra, sizeof(palabra), ar); //Utilizo el fgets para saltearme la linea asi en la proxima lectura no aparece COPIA_REALIZADA
+   }
+   
+}
 
 void ingresarPersona(FILE *ar){
 	char n[50], a[50];
@@ -182,6 +187,7 @@ int validarPersona(FILE *ar, int dniIngreso){
 	char nombre[50], apellido[50];
 	int DNI, repetido=0;
 	
+	saltarMarca(ar);
 	while(fscanf(ar, "Nombre: %s Apellido: %s DNI: %d\n", nombre, apellido, &DNI) == 3 && repetido != 1){
 		if(DNI == dniIngreso){
 			repetido = 1;
@@ -191,7 +197,6 @@ int validarPersona(FILE *ar, int dniIngreso){
 	return repetido;	
 	
 }	
-
 	
 	
 void buscarPorDni(FILE *ar){
@@ -200,6 +205,8 @@ void buscarPorDni(FILE *ar){
 
 	printf("\nIngrese un DNI: ");
 	scanf("%d", &dniBuscado);
+	
+	saltarMarca(ar);
 	
 		while(fscanf(ar, "Nombre: %s Apellido: %s DNI: %d\n", nombre, apellido, &DNI) == 3 && encontrado != 1){
 				if(DNI == dniBuscado){
@@ -227,6 +234,8 @@ void buscarPersona(FILE *ar){
 		
 		int encontrado = 0;		
 		
+		saltarMarca(ar);
+		
 		while(fscanf(ar, "Nombre: %s Apellido: %s DNI: %d\n", nombre, apellido, &DNI) == 3 && encontrado != 1){
 			if(strcmp(nombre, nomBuscado) == 0 && strcmp(apellido, apeBuscado) == 0){
 				printf("\nPersona encontrada:\nNombre: %s\nApellido: %s\nDNI: %d\n", nombre, apellido, DNI);
@@ -239,12 +248,15 @@ void buscarPersona(FILE *ar){
 		}
 }
 
+
 void mostrarOrdenado(FILE *ar, int opc){
 	char nombre[50], apellido[50];
 	int DNI, DNIs[50];	
 	char nombres[25][50], apellidos[25][50];
 	int N=0, i=0, j=0;
 	
+	
+	saltarMarca(ar);
 	
 	while(fscanf(ar, "Nombre: %s Apellido: %s DNI: %d\n", nombre, apellido, &DNI) == 3){
 		strcpy(nombres[i], nombre);
@@ -288,7 +300,7 @@ void mostrarOrdenado(FILE *ar, int opc){
 	}
 	
 	for(i = 0; i < N; i++){
-    printf("Nombre: %s Apellido: %s DNI: %d\n", nombres[i], apellidos[i], DNIs[i]);
+    printf("\nNombre: %s Apellido: %s DNI: %d\n", nombres[i], apellidos[i], DNIs[i]);
 	}
 	
 }
