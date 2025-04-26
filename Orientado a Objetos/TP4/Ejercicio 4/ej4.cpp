@@ -3,7 +3,6 @@
 
 //Para mostrar todos los registros segun nombre, apellido o DNI usaria un fscanf y almacenaria un array de cada dato y luego lo muestro.
 
-
 int validarArchivo(FILE *ar);
 void ingresarPersona(FILE *ar);
 int validarPersona(FILE *ar, int dniIngreso);

@@ -4,3 +4,4 @@ Nombre: Lolo Apellido: Avellana DNI: 444
 Nombre: Camoranesi Apellido: Futbol DNI: 999
 Nombre: Lorenzo Apellido: Marcone DNI: 1500
 Nombre: Julian Apellido: Martin DNI: 145
+Nombre: Tincho Apellido: Parlongo DNI: 999448

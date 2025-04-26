@@ -13,8 +13,7 @@ void saltarMarca(FILE *ar);
 void ingresarPersona(FILE *ar);
 int validarPersona(FILE *ar, int dniIngreso);
 void buscarPorDni(FILE *ar);
-void busc
-arPersona(FILE *ar);
+void buscarPersona(FILE *ar);
 void mostrarOrdenado(FILE *ar, int opc);
 
 

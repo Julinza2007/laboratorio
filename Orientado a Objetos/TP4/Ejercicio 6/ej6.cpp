@@ -17,11 +17,13 @@ int main(){
 	FILE *archivo;
 	int opc;
 	
-	
-	
 do{
 	printf("Ingrese 1 para ingresar jugador con sus puntos.\nIngrese 2 para mostrar los 10 mejores jugadores en base a puntos.\nIngrese 3 para buscar jugador.\nIngrese 0 para salir.\nIngrese opcion: ");
 	scanf("%d", &opc);
+	while(opc < 0 || opc > 3){
+		printf("\nError, ingrese de nuevo: ");
+		scanf("%d", &opc);
+	}
 	
 	switch(opc){
 			case 1:	

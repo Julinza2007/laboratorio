@@ -52,11 +52,15 @@ int main(){
 				
 				encontrado=0;
 				
-				while(fscanf(archivo, "Nombre: %s\nApellido: %s\nDNI: %d\n", nombre, apellido, &DNI) && encontrado != 1){
+				while(fscanf(archivo, "Nombre: %s\nApellido: %s\nDNI: %d\n", nombre, apellido, &DNI) == 3 && encontrado != 1){
 					if (DNI == dniBuscado){
 						printf("Nombre: %s\nApellido: %s\n", nombre, apellido);
 						encontrado = 1;
 					}
+				}
+				
+				if(encontrado == 0){
+					printf("\n\nNo se encontro a la persona.\n\n");
 				}
 				
 				fclose(archivo);
